@@ -22,18 +22,20 @@ def test_attr_name (figure_obj):
         else:
             assert False
     assert True
-#Каждая фигура должна иметь атрибут area (вычисляемое!) - площадь
+#Каждая фигура должна иметь метод get_area (вычисляемое!) - площадь
 def test_attr_area (figure_obj):
     for fig in figure_obj:
-        if hasattr(fig,"area"):
+        fig_methods=dir(fig)
+        if "get_area" in fig_methods:
             continue
         else:
             assert False
     assert True
-#Каждая фигура должна иметь атрибут perimeter (вычисляемое!) - периметр
+#Каждая фигура должна иметь метод get_perimeter (вычисляемое!) - периметр
 def test_attr_perimetr (figure_obj):
     for fig in figure_obj:
-        if hasattr(fig,"perimetr"):
+        fig_methods=dir(fig)
+        if "get_perimetr" in fig_methods:
             continue
         else:
             assert False
@@ -44,20 +46,20 @@ def test_attr_perimetr (figure_obj):
 def test_circle_perimetr(testradius):
     perimetr=2*pi*testradius
     fig=Circle(testradius)
-    assert fig.perimetr == perimetr
+    assert fig.get_perimetr() == perimetr
 #Прямоугольник периметр
 def test_rectangle_perimetr():
     side_a=2
     side_b=3
     perimetr = 2*(side_a + side_b)
     fig=Rectangle(side_a,side_b)
-    assert fig.perimetr == perimetr
+    assert fig.get_perimetr() == perimetr
 #Квадрат периметр
 def test_squre_perimetr():
     side=2
     perimetr = 2 * (side + side)
     fig=Square(side)
-    assert fig.perimetr == perimetr
+    assert fig.get_perimetr() == perimetr
 #Треугольник периметр
 def test_triangle_perimetr():
     side_a=2
@@ -65,26 +67,26 @@ def test_triangle_perimetr():
     side_c=2
     perimetr = (side_a + side_b + side_c)
     fig=Triangle(side_a,side_b,side_c)
-    assert fig.perimetr == perimetr
+    assert fig.get_perimetr() == perimetr
 #Круг плошадь
 def test_circle_area():
     radius=6
     area=pi*radius*radius
     fig=Circle(radius)
-    assert fig.area == area
+    assert fig.get_area() == area
 #Прямоугольник плошадь                       
 def test_rectangle_area():
     side_a=2
     side_b=3
     area = side_a * side_b
     fig=Rectangle(side_a,side_b)
-    assert fig.area == area
+    assert fig.get_area() == area
 #Квадрат плошадь
 def test_squre_area():
     side=2
     perimetr = 2 * (side + side)
     fig=Square(side)
-    assert fig.perimetr == perimetr
+    assert fig.get_perimetr() == perimetr
 #Треугольник плошадь
 def test_triangle_area():
     side_a=2
@@ -93,13 +95,13 @@ def test_triangle_area():
     p = (side_a + side_b + side_c) / 2
     area = (sqrt(p * (p - side_a) * (p - side_b) * (p - side_c)))
     fig=Triangle(side_a,side_b,side_c)
-    assert fig.area == area
+    assert fig.get_area() == area
 #Каждая фигура должна реализовать метод add_area(figure) который должен принимать другую геометрическую фигуру и возвращать сумму площадей этих фигур.
 #Круг
 def test_circle_add_area(figure_obj):
     fig=Circle(6)
     for f in figure_obj:
-        if (fig.area + f.area) == fig.add_area(f):
+        if (fig.get_area() + f.get_area()) == fig.add_area(f):
             continue
         else:
             assert False
@@ -108,7 +110,7 @@ def test_circle_add_area(figure_obj):
 def test_rectangle_add_area(figure_obj):
     fig=Rectangle(2,4)
     for f in figure_obj:
-        if (fig.area + f.area) == fig.add_area(f):
+        if (fig.get_area() + f.get_area()) == fig.add_area(f):
             continue
         else:
             assert False
@@ -117,7 +119,7 @@ def test_rectangle_add_area(figure_obj):
 def test_square_add_area(figure_obj):
     fig=Square(7)
     for f in figure_obj:
-        if (fig.area + f.area) == fig.add_area(f):
+        if (fig.get_area() + f.get_area()) == fig.add_area(f):
             continue
         else:                                           
             assert False
@@ -126,7 +128,7 @@ def test_square_add_area(figure_obj):
 def test_triangle_add_area(figure_obj):
     fig=Triangle(7,8,9)
     for f in figure_obj:
-        if (fig.area + f.area) == fig.add_area(f):
+        if (fig.get_area() + f.get_area()) == fig.add_area(f):
             continue
         else:                                         
             assert False

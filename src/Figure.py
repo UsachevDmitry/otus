@@ -6,6 +6,6 @@ class Figure:
             raise NotImplementedError("You cannot create an object of this class (Figure)")
     def add_area(self,figure):
         if isinstance(figure, Figure):
-            return self.area + figure.area
+            return self.get_area() + figure.get_area()
         else:
             raise NotImplementedError("Incorrect class figure")

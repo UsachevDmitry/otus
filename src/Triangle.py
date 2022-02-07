@@ -18,15 +18,10 @@ class Triangle(Figure):
         self.b = b
         self.c = c
         self.name = "Triangle"
-        self.perimetr = (self.a + self.b + self.c)
+    def get_perimetr(self):
+        return (self.a + self.b + self.c)
+    def get_area(self):
         p = (self.a + self.b + self.c) / 2
-        self.area = (sqrt(p * (p - self.a) * (p - self.b) * (p - self.c)))
+        return (sqrt(p * (p - self.a) * (p - self.b) * (p - self.c)))
 
-
-
-
-#ex2=Triangle(4,5,6)
-#print(ex2.perimetr)
-#print(ex2.area)
-#print(ex2.name)
 
