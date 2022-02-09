@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import json
 #Создаем датафреймы из наших файлов
 df_books = pd.read_csv('books.csv')
 df_users = pd.read_json('users.json')
@@ -17,4 +18,4 @@ books_split = np.array_split(books,len(df_new_users))
 df_new_users['books'] = books_split
 #Выводим результат в файл с нужным форматированием
 with open('result_hw3.json', 'w') as f:
-    f.write(df_new_users.to_json(orient='records', lines=True, indent=3))
+    f.write(json.dumps(json.loads(df_new_users.to_json(orient="records")), indent=4))
