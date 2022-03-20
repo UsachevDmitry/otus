@@ -69,6 +69,3 @@ def test_json_schema_albums(service_3_url,number):
     }
 
     validate(instance=res, schema=schema)
-
-
-
